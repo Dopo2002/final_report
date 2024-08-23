@@ -10,13 +10,71 @@
    - [進制轉換的應用](#進制轉換的應用)
    - [結論](#結論)
 ## 了解進位轉換
-
+在計算機科學和數學中，進制是一種表示數字的方式，它決定了一個數字的基數和表示規則。最常見的進位包括：  
+* 十進制（Decimal）：基數為10，使用0-9這10個數字表示。  
+* 二進位（Binary）：基數為2，使用0和1表示。  
+* 八進位（Octal）：基數為8，使用0-7表示。  
+* 十六進位（Hexadecimal）：基數為16，使用0-9和A-F表示。
+ 
+每種進制都有其獨特的特點和應用場景。進位轉換是將數字從一種進位表示轉換為另一種進位表示的過程。在接下來的部分，我們將重點放在如何將十進制數轉換為其他進制。
 ## 進位轉換原理
+進制轉換的核心原理涉及除法和取餘操作。具體步驟如下：  
 
+* 從十進制數的最右邊開始，連續進行除法和取餘操作。
+* 將每次取得的餘數儲存起來，它們構成了新進制下的數值。
+* 將商數作為下一輪的被除數，直到商數為0為止。
+* 將儲存的餘數依照相反的順序排列，得到新進制的表示。  
+
+讓我們以一個範例來說明如何將十進制數轉換為二進制。
 ## 範例1：十進位到二進位
+我們以十進制數 233 為例，將其轉換為二進制。  
 
+* 用 2（二進位的基數）除以 233，得到商數 116 和餘數 1。
+* 然後，將商數 116 除以 2，得到商數 58 和餘數 0。
+* 繼續這個過程，直到商數為 0。
+* 最後，將所有的餘數從下往上排列，得到二進位表示為 11101001。  
+
+這個轉換過程可以輕鬆地使用堆疊來實作。
 ## 使用堆疊進行進位轉換
+棧是一種理想的資料結構，用於實現進制轉換。我們可以將每次的餘數推入堆疊中，然後以相反的順序從堆疊中彈出這些餘數，從而獲得正確的進位表示。以下是使用Python堆疊實現十進位到二進位轉換的範例程式碼：  
+class Stack:
+    def __init__(self):
+        self.items = []
 
+    def is_empty(self):
+        return len(self.items) == 0
+
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        if not self.is_empty():
+            return self.items.pop()
+
+    def peek(self):
+        if not self.is_empty():
+            return self.items[-1]
+
+    def size(self):
+        return len(self.items)
+    def decimal_to_binary(decimal_num):
+    stack = Stack()  # 建立一個空棧，用於存儲餘數
+
+    while decimal_num > 0:
+        remainder = decimal_num % 2  # 計算餘數
+        stack.push(remainder)  # 將餘數推入棧中
+        decimal_num = decimal_num // 2  # 更新商
+
+    binary_str = ""
+    while not stack.is_empty():
+        binary_str += str(stack.pop())  # 彈出棧中的餘數，構建二進位字符串
+
+    return binary_str  
+讓我們測試一下這個函數：  
+print(decimal_to_binary(233))  # 輸出：'11101001'
+
+
+這個函數使用堆疊來儲存餘數，並將它們按照正確的順序彈出以建立二進位表示。這個方法可以用於任何十進位到二進制的轉換。
 ## 範例2：十進位到八進制
 
 ## 進制轉換的應用
