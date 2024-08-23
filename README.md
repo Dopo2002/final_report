@@ -71,11 +71,15 @@ class Stack:
 
     return binary_str  
 讓我們測試一下這個函數：  
-   print(decimal_to_binary(233))  # 輸出：'11101001'
-
+  ```print(decimal_to_binary(233))  # 輸出：'11101001```  
+  輸出結果:  
+  
+![01](https://github.com/Dopo2002/final_report/blob/main/%E8%BC%B8%E5%87%BA1.jpg)
 
 這個函數使用堆疊來儲存餘數，並將它們按照正確的順序彈出以建立二進位表示。這個方法可以用於任何十進位到二進制的轉換。
 ## 範例2：十進位到八進制
+現在，讓我們來看一個將十進制數轉換為八  
+進制的範例。我們只需稍微修改上面的程式碼，將基數從2改為8：  
 
 ## 進制轉換的應用
 
