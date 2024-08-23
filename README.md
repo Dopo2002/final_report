@@ -80,7 +80,63 @@ class Stack:
 ## 範例2：十進位到八進制
 現在，讓我們來看一個將十進制數轉換為八  
 進制的範例。我們只需稍微修改上面的程式碼，將基數從2改為8：  
+```
+class Stack:
+    def __init__(self):
+        self.items = []
+ 
+    def is_empty(self):
+        return len(self.items) == 0
+ 
+    def push(self, item):
+        self.items.append(item)
+ 
+    def pop(self):
+        if not self.is_empty():
+            return self.items.pop()
+ 
+    def peek(self):
+        if not self.is_empty():
+            return self.items[-1]
+ 
+    def size(self):
+        return len(self.items)
+def decimal_to_octal(decimal_num):
+    stack = Stack()  # 建立一個空棧，用於存儲餘數
 
+    while decimal_num > 0:
+        remainder = decimal_num % 8  # 計算餘數
+        stack.push(remainder)  # 將餘數推入棧中
+        decimal_num = decimal_num // 8  # 更新商
+
+    octal_str = ""
+    while not stack.is_empty():
+        octal_str += str(stack.pop())  # 彈出棧中的餘數，構建八進位字符串
+
+    return octal_str
+
+
+print(decimal_to_octal(233))  # 输出：'351'
+ ```
+讓我們測試一下這個函數：  
+  ```print(decimal_to_octal(233))  # 输出：'351'```  
+輸出結果:  
+![01](https://github.com/Dopo2002/final_report/blob/main/%E8%BC%B8%E5%87%BA2.jpg)   
+
+這個函數使用堆疊來儲存餘數，並將它們按照正確的順序彈出以建立二進位表示。這個方法可以用於任何十進位到二進制的轉換。
 ## 進制轉換的應用
+進制轉換不僅僅是一個有趣的數學概念，它在電腦科學和電腦程式設計中也有重要的應用。以下是一些應用範例：
 
+* 電腦記憶體管理： 電腦記憶體中的資料通常以二進位形式儲存。進制轉換用於查看和理解記憶體中的資料。
+
+* 網路通訊： 資料在電腦網路中以二進位傳輸。進制轉換有助於理解和解析網路資料包。
+
+* 影像處理： 影像的像素值通常以不同的進位表示，進位轉換可用於修改影像的色彩深度等。
+
+* 程式設計： 程式設計師可能需要在不同的進位之間進行轉換，以便理解和調試程式中的資料。
+
+* 密碼學： 加密和解密演算法中使用了不同進位的數學操作，包括二進位和十六進位。
+
+進制轉換是計算機科學中的一個基本概念，深入了解它將有助於更好地理解電腦系統的內部工作原理。
 ## 結論
+棧是一個強大的資料結構，用於實現進制轉換等許多問題。透過深入理解堆疊的工作原理，您可以更好地理解它的應用，包括電腦記憶體管理、程式設計、網路通訊等領域。
