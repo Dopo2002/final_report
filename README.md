@@ -71,7 +71,7 @@ class Stack:
 
     return binary_str  
 讓我們測試一下這個函數：  
-print(decimal_to_binary(233))  # 輸出：'11101001'
+   print(decimal_to_binary(233))  # 輸出：'11101001'
 
 
 這個函數使用堆疊來儲存餘數，並將它們按照正確的順序彈出以建立二進位表示。這個方法可以用於任何十進位到二進制的轉換。
