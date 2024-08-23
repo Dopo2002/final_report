@@ -71,8 +71,7 @@ class Stack:
     return binary_str  
 讓我們測試一下這個函數：  
   ```print(decimal_to_binary(233))  # 輸出：'11101001```  
-    
-  輸出結果:  
+#### 輸出結果:  
   
 ![01](https://github.com/Dopo2002/final_report/blob/main/%E8%BC%B8%E5%87%BA1.jpg)
 
@@ -120,7 +119,7 @@ print(decimal_to_octal(233))  # 输出：'351'
  ```
 讓我們測試一下這個函數：  
   ```print(decimal_to_octal(233))  # 输出：'351'```  
-輸出結果:  
+#### 輸出結果:  
 ![01](https://github.com/Dopo2002/final_report/blob/main/%E8%BC%B8%E5%87%BA2.jpg)   
 
 這個函數使用堆疊來儲存餘數，並將它們按照正確的順序彈出以建立二進位表示。這個方法可以用於任何十進位到二進制的轉換。
